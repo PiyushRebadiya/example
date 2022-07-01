@@ -150,7 +150,7 @@ function LocationApi({
       : "area";
   return (
     <>
-      <div className={col && "col-5"}>
+      <div className={col && "col-4"}>
         <div className="list-location-view">
           {values.country.id && (
             <LocationView

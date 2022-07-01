@@ -39,7 +39,7 @@ function UserRequest({setSelected}) {
   
   return (
     <>
-      <div className="col-3">
+      <div className="col-4">
               <div ><SearchUserRequest/></div>
         <h1>Apply here</h1>
         <LocationApi
