@@ -1,0 +1,30 @@
+#header1 {
+    height: 55px;
+    background-color: rgb(12, 85, 221);
+    box-sizing: border-box;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    padding: 0px 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-logo {
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: bold;
+    font: sans-serif;
+    color: white;
+}
+
+.main-logo:hover {
+    color: white;
+}
+
+.openbtn {
+    cursor: pointer;
+    border: none;
+    float: right;
+    background-color: white;
+    margin: 10px;
+}

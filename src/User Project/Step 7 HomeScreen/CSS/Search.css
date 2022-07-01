@@ -1,0 +1,88 @@
+.figure{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
+    position: relative;
+}
+.search1{
+    margin-top: 20px;
+    border: none; 
+    font-size: 14px;
+    padding: 2px 5px 2px 40px;
+    background-image: url('../Images/c1.png');
+    background-repeat: no-repeat;
+    background-position: 10px 5px;
+    text-transform: capitalize;
+    background-color: rgb(248, 248, 248);
+}
+
+.search1:focus{
+    outline: none;
+    cursor: pointer;
+}
+
+.search2 li{
+    list-style: none;
+    cursor: pointer; 
+    margin:0px;
+    padding :0px;
+}
+
+.search2 li:hover{
+    background-color: rgb(216, 213, 213);
+    border-radius: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+}    
+
+.time-zone{
+    display: flex;
+    align-items: center;
+}
+.time-zone p{
+    margin: 0;
+    font-size: 10px;
+    font-weight: 700;
+}
+.search2 figure {
+    display: flex;
+    align-items: center;
+}
+.search2 figure:before {
+    content: "●"; 
+    color: green ;
+    margin-right: 1em;
+    margin-left: 0.5em;
+}
+
+
+.dropdown{
+    height: 100px ; 
+    width: 100px ; 
+    margin:5px;
+    padding: 10px; 
+    float: right ;
+    box-sizing: border-box;  
+    background-color: rgb(248, 248, 248);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow:auto;
+}
+
+.list{
+    cursor: pointer;
+}
+
+.user-sort-list{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 5px;
+}
+.user-sort-list button{
+    background-color:#ececec;
+    border: none;
+    cursor: pointer;
+    padding: 3px 10px;
+    border-radius: 15px;
+}
