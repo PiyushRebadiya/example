@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import '../../../CSS/Modal.css'
 import "../../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import UserPost from "../4. Post/UserPost";
 import axios from "axios";
@@ -53,7 +54,7 @@ function Post({ selectValue, postValue }) {
             <div style={{background:"white"}}>
               <p style={{paddingTop:"10px"}}>{`${postValue}`}</p>
               <p>{value}</p>
-              <p>price 120 rs.</p>
+                  <p className={!selectValue?.retailPrice && "colorRed"}>{selectValue?.retailPrice ? `price ${selectValue.retailPrice} rs.` : `Please Update Retail Price`}</p>
               <button className="btn btn-primary" style={{marginBottom:"10px"}} onClick={() => confirmAPIhandler()}>Add To Cart</button>
               {
                 confirm && <p style={{paddingBottom:"20px"}}>Thank you for choosing Location</p>
