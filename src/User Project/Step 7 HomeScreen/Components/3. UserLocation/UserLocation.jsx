@@ -9,6 +9,7 @@ function UserLocation({ setGender, setSelected }) {
   const [serviceProviderPostId, setServiceProviderPostId] = useState();
   const [selectValue, setSelectValue] = useState()
   const [postValue, setPostValue] = useState()
+  const [col, setCol] = useState(true)
 
   const [serviceProvider, setServiceProvider] = useState([]);
   const [values, setValues] = useState({
@@ -41,7 +42,9 @@ function UserLocation({ setGender, setSelected }) {
   return (
     <>
       <div className="row">
-        <UserRequest />
+        <UserRequest
+        setSelected={setSelected}
+        />
         <Post
         selectValue={selectValue}
           postValue={postValue}
@@ -55,6 +58,7 @@ function UserLocation({ setGender, setSelected }) {
           setType={setType}
           setSelected={setSelected}
           setPostValue={setPostValue}
+          col={col}
         />
       </div>
     </>
