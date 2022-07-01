@@ -3,6 +3,7 @@ import axios from "axios";
 import "../../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import location from "../../../Images/location.png";
 import "../../../CSS/Location.css";
+import Modal from '../../../layout/Modal';
 
 function SearchRequestLocation({
   values,
@@ -12,7 +13,8 @@ function SearchRequestLocation({
   setServiceProviderPostId,
   setSelected,
   setSelectValue,
-  setPostValue
+  setPostValue,
+  col
 }) {
   const [data, setData] = useState({
     countries: [],
@@ -27,6 +29,13 @@ function SearchRequestLocation({
   const [cities, setCities] = useState([]);
   const [areas, setAreas] = useState([]);
   const token = localStorage.getItem('token'); 
+  const [showModal, updateShowModal] = useState(false);
+  const [modalData, setModalData] = useState({});
+  const [inputValue, setInputValue] = useState("");
+
+  const changeHandler = (e) => {
+    setInputValue(e.target.value)
+  }
 
   useEffect(() => {
     if (type === "areas" || type === "apartments" || type === "villages") {
@@ -148,6 +157,71 @@ useEffect(() => {
         console.log(error);
       }, []);
   };
+  const toggleModal = (item) => {
+    if (type == "countries") {
+      setModalData({
+        title: `Update Country Service Price`,
+        value: item,
+        updateId:item.countryId,
+        saveButton: "Update",
+        placeholder:`Enter a price`
+      })
+      updateShowModal(state => !state);
+      setInputValue(item.servicePrice);
+    } else if (type == "states") {
+      setModalData({
+        title: `Update State Service Price`,
+        value: item,
+        updateId:item.stateId,
+        saveButton: "Update",
+        placeholder:`Enter a price`
+      })
+      updateShowModal(state => !state);
+      setInputValue(item.servicePrice);
+    } else if (type == "cities") {
+      setModalData({
+        title: `Update City Service Price`,
+        value: item,
+        updateId:item.cityId,
+        saveButton: "Update",
+        placeholder:`Enter a price`
+      })
+      updateShowModal(state => !state);
+      setInputValue(item.servicePrice);
+    } else if (type == "areas") {
+      setModalData({
+        title: `Update Area Service Price`,
+        value: item,
+        updateId:item.areaId,
+        saveButton: "Update",
+        placeholder:`Enter a price`
+      })
+      updateShowModal(state => !state);
+      setInputValue(item.servicePrice);
+    } else if (type == "apartments") {
+      setModalData({
+        title: `Update Apartment Service Price`,
+        value: item,
+        updateId:item.apartmentId,
+        saveButton: "Update",
+        placeholder:`Enter a price`
+      })
+      updateShowModal(state => !state);
+      setInputValue(item.servicePrice);
+    } else if (type == "villages") {
+      setModalData({
+        title: `Update Village Service Price`,
+        value: item,
+        updateId:item.villageId,
+        saveButton: "Update",
+        placeholder:`Enter a price`
+      })
+      updateShowModal(state => !state);
+      setInputValue(item.servicePrice);
+    } else {
+      // url = ""
+    }
+  }
 
   const getListOfCity = (id, stateName) => {
     const state = {
@@ -334,6 +408,59 @@ useEffect(() => {
     setPostValue(value)
   }
 
+  const priceUpdateHandler =async (id,value) => {
+    if (!inputValue) {
+      return alert("Please fill value!")
+    }
+    let url;
+    let obj;
+    if (type == "countries") {
+      url = `http://api-maa.in.net/maa/country/service/price/update/${id}`
+      obj = {
+        ...value,
+        servicePrice:inputValue
+      };
+    } else if (type == "states") {
+      url = `http://api-maa.in.net/maa/state/service/price/update/${id}`
+      obj = {
+        ...value,
+        servicePrice:inputValue
+      };
+    } else if (type == "cities") {
+      url = `http://api-maa.in.net/maa/city/service/price/update/${id}`
+      obj = {
+        ...value,
+        servicePrice:inputValue
+      };
+    } else if (type == "areas") {
+      url = `http://api-maa.in.net/maa/area/service/price/update/${id}`
+      obj = {
+        ...value,
+        servicePrice:inputValue
+      };
+    } else if (type == "apartments") {
+      url = `http://api-maa.in.net/maa/apartment/service/price/update/${id}`
+      obj = {
+        ...value,
+        servicePrice:inputValue
+      };
+    } else if (type == "villages") {
+      url = `http://api-maa.in.net/maa/village/service/price/update/${id}`
+      obj = {
+        ...value,
+        servicePrice:inputValue
+      };
+    } else {
+      url = ""
+    }
+    await  axios.put(url, obj)
+      .then((response) => { 
+        updateShowModal(state => !state);
+        alert("Update Successfully")
+        setInputValue("");
+      });
+  }
+
   const getContent = () => {
     if (type === "countries") {
       return (
@@ -357,8 +484,16 @@ useEffect(() => {
                       />
                       {country.countryName}
                     </figcaption>
-                    <p style={{position: "absolute",right: "20%",marginBottom:"0"}}>120 rs.</p>
+                    {
+                      country.servicePrice ?
+                        <p style={{ position: "absolute", right: "20%", marginBottom: "0" }}>{country.servicePrice} rs.</p>
+                      :
+                      <button className="btn btn-warning" style={{position: "absolute",right: "20%",marginBottom:"0"}} onClick={() => toggleModal(country)}>Edit</button>
+                    }
+                    {
+                      col &&
                     <button style={{position: "absolute",right: "5%"}} className="btn btn-success" onClick={() => navigateHandler(country)}>Select</button>
+                    }
                   </figure>
                 </li>
               ))}
@@ -387,8 +522,16 @@ useEffect(() => {
                       />
                       {state.stateName}
                     </figcaption>
-                    <p style={{position: "absolute",right: "20%",marginBottom:"0"}}>120 rs.</p>
+                    {
+                      state.servicePrice ?
+                        <p style={{ position: "absolute", right: "20%", marginBottom: "0" }}>{state.servicePrice} rs.</p>
+                      :
+                      <button className="btn btn-warning" style={{position: "absolute",right: "20%",marginBottom:"0"}} onClick={() => toggleModal(state)}>Edit</button>
+                    }
+                    {
+                      col &&
                     <button className="btn btn-success" onClick={() => navigateHandler(state)} style={{position: "absolute",right: "5%"}}>Select</button>
+                    }
                   </figure>
                 </li>
               ))}
@@ -419,8 +562,16 @@ useEffect(() => {
                       />
                       {city.cityName}
                     </figcaption>
-                    <p style={{position: "absolute",right: "20%",marginBottom:"0"}}>120 rs.</p>
+                    {
+                      city.servicePrice ?
+                        <p style={{ position: "absolute", right: "20%", marginBottom: "0" }}>{city.servicePrice} rs.</p>
+                      :
+                      <button className="btn btn-warning" style={{position: "absolute",right: "20%",marginBottom:"0"}} onClick={() => toggleModal(city)}>Edit</button>
+                    }
+                    {
+                      col &&
                     <button className="btn btn-success" onClick={() => navigateHandler(city)} style={{position: "absolute",right: "5%"}}>Select</button>
+                    }
                   </figure>
                 </li>
               ))}
@@ -460,8 +611,16 @@ useEffect(() => {
                       />
                       {area[`${key}Name`]}
                     </figcaption>
-                    <p style={{position: "absolute",right: "20%",marginBottom:"0"}}>120 rs.</p>
+                    {
+                      area.servicePrice ?
+                        <p style={{ position: "absolute", right: "20%", marginBottom: "0" }}>{area.servicePrice} rs.</p>
+                      :
+                      <button className="btn btn-warning" style={{position: "absolute",right: "20%",marginBottom:"0"}} onClick={() => toggleModal(area)}>Edit</button>
+                    }
+                    {
+                      col &&
                     <button className="btn btn-success" onClick={() => navigateHandler(area)} style={{position: "absolute",right: "5%"}}>Select</button>
+                    }
                   </figure>
                 </li>
               ))}
@@ -482,6 +641,7 @@ useEffect(() => {
         onChange={(e) => handleSearch(e)}
       />
       <hr></hr>
+      <Modal canShow={showModal} updateModalState={toggleModal} modalData={modalData} setInputValue={setInputValue} inputValue={inputValue} changeHandler={changeHandler} priceUpdateHandler={priceUpdateHandler} />
       {getContent()}
       <div className="view-more-wrapper">
         {data[type] && count < data[type].length && (

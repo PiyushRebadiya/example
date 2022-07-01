@@ -22,7 +22,8 @@ function LocationApi({
   setServiceProviderPostId,
   setSelected,
   setSelectValue,
-  setPostValue
+  setPostValue,
+  col
 }) {
   const handleClearAll = () => {
     setValues({
@@ -149,7 +150,7 @@ function LocationApi({
       : "area";
   return (
     <>
-      <div className="col-5">
+      <div className={col && "col-5"}>
         <div className="list-location-view">
           {values.country.id && (
             <LocationView
@@ -212,6 +213,7 @@ function LocationApi({
           setSelected={setSelected}
           setSelectValue={setSelectValue}
           setPostValue={setPostValue}
+          col={col}
         />
       </div>
     </>
