@@ -486,8 +486,12 @@ useEffect(() => {
                     </figcaption>
                     {
                       country.servicePrice ?
-                        <p style={{ position: "absolute", right: "30%", marginBottom: "0" }}>{country.servicePrice} rs.</p>
+                        <p style={{ position: "absolute", right: "50%", marginBottom: "0" }}>{country.servicePrice} rs.</p>
                       :
+                      <button className="btn btn-warning" style={{position: "absolute",right: "30%",marginBottom:"0"}} onClick={() => toggleModal(country)}>Edit</button>
+                    }
+                    {
+                      country.servicePrice &&
                       <button className="btn btn-warning" style={{position: "absolute",right: "30%",marginBottom:"0"}} onClick={() => toggleModal(country)}>Edit</button>
                     }
                     {
@@ -524,8 +528,12 @@ useEffect(() => {
                     </figcaption>
                     {
                       state.servicePrice ?
-                        <p style={{ position: "absolute", right: "30%", marginBottom: "0" }}>{state.servicePrice} rs.</p>
+                        <p style={{ position: "absolute", right: "50%", marginBottom: "0" }}>{state.servicePrice} rs.</p>
                       :
+                      <button className="btn btn-warning" style={{position: "absolute",right: "30%",marginBottom:"0"}} onClick={() => toggleModal(state)}>Edit</button>
+                    }
+                    {
+                      state.servicePrice &&
                       <button className="btn btn-warning" style={{position: "absolute",right: "30%",marginBottom:"0"}} onClick={() => toggleModal(state)}>Edit</button>
                     }
                     {
@@ -564,8 +572,12 @@ useEffect(() => {
                     </figcaption>
                     {
                       city.servicePrice ?
-                        <p style={{ position: "absolute", right: "30%", marginBottom: "0" }}>{city.servicePrice} rs.</p>
+                        <p style={{ position: "absolute", right: "50%", marginBottom: "0" }}>{city.servicePrice} rs.</p>
                       :
+                      <button className="btn btn-warning" style={{position: "absolute",right: "30%",marginBottom:"0"}} onClick={() => toggleModal(city)}>Edit</button>
+                    }
+                    {
+                      city.servicePrice &&
                       <button className="btn btn-warning" style={{position: "absolute",right: "30%",marginBottom:"0"}} onClick={() => toggleModal(city)}>Edit</button>
                     }
                     {
@@ -613,8 +625,12 @@ useEffect(() => {
                     </figcaption>
                     {
                       area.servicePrice ?
-                        <p style={{ position: "absolute", right: "30%", marginBottom: "0" }}>{area.servicePrice} rs.</p>
+                        <p style={{ position: "absolute", right: "50%", marginBottom: "0" }}>{area.servicePrice} rs.</p>
                       :
+                      <button className="btn btn-warning" style={{position: "absolute",right: "30%",marginBottom:"0"}} onClick={() => toggleModal(area)}>Edit</button>
+                    }
+                    {
+                      area.servicePrice &&
                       <button className="btn btn-warning" style={{position: "absolute",right: "30%",marginBottom:"0"}} onClick={() => toggleModal(area)}>Edit</button>
                     }
                     {
