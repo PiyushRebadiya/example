@@ -486,9 +486,13 @@ useEffect(() => {
                     </figcaption>
                     {
                       country.realEstatePrice ?
-                        <p style={{ position: "absolute", right: "30%", marginBottom: "0" }}>{country.realEstatePrice} rs.</p>
+                        <p style={{ position: "absolute", right: "50%", marginBottom: "0" }}>{country.realEstatePrice} rs.</p>
                       :
                       <button className="btn btn-warning" style={{position: "absolute",right: "30%",marginBottom:"0"}} onClick={() => toggleModal(country)}>Edit</button>
+                    }
+                    {
+                      country.realEstatePrice &&
+                    <button className="btn btn-warning" style={{position: "absolute",right: "30%",marginBottom:"0"}} onClick={() => toggleModal(country)}>Edit</button>
                     }
                     {
                       col &&
@@ -524,8 +528,12 @@ useEffect(() => {
                     </figcaption>
                     {
                       state.realEstatePrice ?
-                        <p style={{ position: "absolute", right: "30%", marginBottom: "0" }}>{state.realEstatePrice} rs.</p>
+                        <p style={{ position: "absolute", right: "50%", marginBottom: "0" }}>{state.realEstatePrice} rs.</p>
                       :
+                      <button className="btn btn-warning" style={{position: "absolute",right: "30%",marginBottom:"0"}} onClick={() => toggleModal(state)}>Edit</button>
+                    }
+                    {
+                      state.realEstatePrice &&
                       <button className="btn btn-warning" style={{position: "absolute",right: "30%",marginBottom:"0"}} onClick={() => toggleModal(state)}>Edit</button>
                     }
                     {
@@ -564,8 +572,12 @@ useEffect(() => {
                     </figcaption>
                     {
                       city.realEstatePrice ?
-                        <p style={{ position: "absolute", right: "30%", marginBottom: "0" }}>{city.realEstatePrice} rs.</p>
+                        <p style={{ position: "absolute", right: "50%", marginBottom: "0" }}>{city.realEstatePrice} rs.</p>
                       :
+                      <button className="btn btn-warning" style={{position: "absolute",right: "30%",marginBottom:"0"}} onClick={() => toggleModal(city)}>Edit</button>
+                    }
+                    {
+                      city.realEstatePrice &&
                       <button className="btn btn-warning" style={{position: "absolute",right: "30%",marginBottom:"0"}} onClick={() => toggleModal(city)}>Edit</button>
                     }
                     {
@@ -613,8 +625,12 @@ useEffect(() => {
                     </figcaption>
                     {
                       area.realEstatePrice ?
-                        <p style={{ position: "absolute", right: "30%", marginBottom: "0" }}>{area.realEstatePrice} rs.</p>
+                        <p style={{ position: "absolute", right: "50%", marginBottom: "0" }}>{area.realEstatePrice} rs.</p>
                       :
+                      <button className="btn btn-warning" style={{position: "absolute",right: "30%",marginBottom:"0"}} onClick={() => toggleModal(area)}>Edit</button>
+                    }
+                    {
+                      area.realEstatePrice &&
                       <button className="btn btn-warning" style={{position: "absolute",right: "30%",marginBottom:"0"}} onClick={() => toggleModal(area)}>Edit</button>
                     }
                     {
